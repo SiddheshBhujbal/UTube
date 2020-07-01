@@ -1,10 +1,41 @@
 <%- include('partials/header') %>
-<h1>Welcome SDS'ian</h1>
-<form method='POST' action='/home'>
-	<input type='text' name='search' placeholder='Search...'>
-	<input type='submit' value='Search'>
+
+<div class='container'>
+	
+<form method='POST' action='/home' class='form-inline'>
+	<div class='input-group w-50' id='searchbar'>
+		<input type='text' name='search' placeholder='Search...' class='form-control'>
+		<div class='input-group-append'>
+			<span class='input-group-text'><i class="fa fa-search big" aria-hidden="true"></i></span>
+			
+		</div>
+	</div>
+	
+	
 </form>
-<h3>
-	<%=search%>
-</h3>
+		<div class='container'>
+	<div class='row'>
+
+	
+		<% result.forEach(function(result){%>
+	
+
+		<iframe src="https://www.youtube.com/embed/<%= result.id.videoId %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class='col-md-4 col-sm-6 video'></iframe>
+
+
+			<!-- <div class='img-thumbnail'>
+				<img src='<%= result.snippet.thumbnails.medium.url %>'>	
+				<p><%=result.snippet.title.substring(0,50)%>..</p>
+			</div> -->
+		
+		<%})%>
+
+
+	</div>	
+	
+</div>
+
+
+
+
 <%- include('partials/footer') %>

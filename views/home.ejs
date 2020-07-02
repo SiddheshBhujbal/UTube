@@ -1,41 +1,38 @@
 <%- include('partials/header') %>
 
-<div class='container'>
-	
-<form method='POST' action='/home' class='form-inline'>
-	<div class='input-group w-50' id='searchbar'>
-		<input type='text' name='search' placeholder='Search...' class='form-control'>
+
+	<nav class="navbar navbar-light">
+		<div class='container' id='nav'>
+  <span class="navbar-brand mb-0 h1" ><i class="fa fa-youtube-play" aria-hidden="true" id='main'></i></span>
+			<form method='POST' action='/home'>
+	<div class='input-group' id='searchbar'>
+		<input type='text' name='search' placeholder='Search...' class='form-control' autofocus>
 		<div class='input-group-append'>
-			<span class='input-group-text'><i class="fa fa-search big" aria-hidden="true"></i></span>
+			<button class='input-group-text'><i class="fa fa-search big" aria-hidden="true"></i></button>
 			
 		</div>
-	</div>
-	
-	
-</form>
-		<div class='container'>
-	<div class='row'>
-
-	
-		<% result.forEach(function(result){%>
-	
-
-		<iframe src="https://www.youtube.com/embed/<%= result.id.videoId %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class='col-md-4 col-sm-6 video'></iframe>
-
-
-			<!-- <div class='img-thumbnail'>
-				<img src='<%= result.snippet.thumbnails.medium.url %>'>	
-				<p><%=result.snippet.title.substring(0,50)%>..</p>
-			</div> -->
-		
-		<%})%>
-
-
 	</div>	
-	
+	</form>
 </div>
+</nav>
 
-
+<div class='container'>
+	<div class="row">
+		<% result.forEach(function(result,index){%>
+		<div class='col-md-6 col-lg-4'>
+	  <div class="card">
+    <img class="card-img-top" src="<%=result.snippet.thumbnails.medium.url%>" alt="Card image">
+    <div class="card-body">
+		<strong><p class="card-title"><%-result.snippet.title%></p></strong>
+      <a href="https://www.youtube.com/embed/<%=result.id.videoId%>" class="btn btn-light button"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+    </div>
+  </div>
+				
+		</div>
+	  
+		<% }) %>
+  
+</div>
 
 
 <%- include('partials/footer') %>

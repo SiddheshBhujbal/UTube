@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 //API KEY
-var key = 'AIzaSyCH0o4FgdgWqLnAWeq8qMhTWHOp9HiXINo';
+var key = 'AIzaSyAv1Pw8RAH-SOtY7K6cyNCgI4gVZTdL1ls';
 
 //ROOT ROUTE
 app.get('/',function(req,res){
@@ -20,7 +20,7 @@ app.get('/',function(req,res){
 //INDEX ROUTE
 app.get('/home',function(req,res){
 	var values = '';
-		request('https://www.googleapis.com/youtube/v3/search?q='+values+'&part=snippet&type=video&maxResults=27&key='+key,function(err,response,body){
+		request('https://www.googleapis.com/youtube/v3/search?q='+values+'&part=snippet&type=video&maxResults=30&key='+key,function(err,response,body){
 			if(!err && response.statusCode ==200){
 				var result = JSON.parse(body) 
 				res.render('home',{result: result.items})
@@ -36,7 +36,7 @@ app.get('/home',function(req,res){
 app.post('/home',function(req,res){
 	var values = req.body.search;
 	
-		request('https://www.googleapis.com/youtube/v3/search?q='+values+'&part=snippet&type=video&maxResults=27&key='+key,function(err,response,body){
+		request('https://www.googleapis.com/youtube/v3/search?q='+values+'&part=snippet&type=video&maxResults=30&key='+key,function(err,response,body){
 			if(!err && response.statusCode ==200){
 				var result = JSON.parse(body) 
 				res.render('home',{result: result.items})

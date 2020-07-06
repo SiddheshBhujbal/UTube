@@ -86,6 +86,11 @@ nav{
 	background: rgba(255,0,0);
 }
 
+a,a:hover{
+	color:black;
+	text-decoration:none;
+}
+
 *{
   box-sizing: border-box;
 }

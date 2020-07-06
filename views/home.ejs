@@ -1,6 +1,7 @@
 <%- include('partials/header') %>
 	<nav class="navbar navbar-light">
 		<div class='container' id='nav'> <span class="navbar-brand mb-0 h1"><i class="fa fa-youtube-play" aria-hidden="true" id='main'></i></span>
+			<div class='w-50' style='float:right'>
 			<form method='POST' action='/home'>
 				<div class='input-group' id='searchbar'>
 					<input type='text' name='search' placeholder='Search...' class='form-control' autofocus>
@@ -9,18 +10,24 @@
 					</div>
 				</div>
 			</form>
+			</div>
 		</div>
 	</nav>
+
 	<div class='container'>
 		<div class="row">
 			<% result.forEach(function(result,index){%>
 				<div class='col-md-6 col-lg-4'>
 					<div data-aos="fade-up" data-aos-duration="1000">
+						<a href="https://www.youtube.com/embed/<%=result.id.videoId%>">
 						<div class="card"> <img class="card-img-top" src="<%=result.snippet.thumbnails.medium.url%>" alt="Card image">
-							<div class="card-body"> <strong><p class="card-title"><%-result.snippet.title%></p></strong> <a href="https://www.youtube.com/embed/<%=result.id.videoId%>" class="btn btn-light button"><i class="fa fa-youtube-play" aria-hidden="true"></i></a> </div>
+							<div class="card-body"> <strong><p class="card-title"><%-result.snippet.title%></p></strong></div>
 						</div>
+						</a>
 					</div>
 				</div>
 				<% }) %>
 		</div>
+	</div>
+
 		<%- include('partials/footer') %>
